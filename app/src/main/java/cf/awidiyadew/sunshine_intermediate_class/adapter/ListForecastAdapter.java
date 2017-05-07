@@ -19,6 +19,10 @@ public class ListForecastAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private List<DummyForecast> listData = new ArrayList<>();
 
+    public ListForecastAdapter(List<DummyForecast> listData) {
+        this.listData = listData;
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
