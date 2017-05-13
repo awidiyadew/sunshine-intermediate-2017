@@ -49,5 +49,14 @@ public class DummyForecast {
     public void setMinTemp(int minTemp) {
         this.minTemp = minTemp;
     }
+
+    public String getMaxTempWithDerajat(){
+        return String.valueOf(maxTemp) + "\u00b0";
+    }
+
+    public String getMixTempWithDerajat(){
+        return String.valueOf(minTemp) + "\u00b0";
+    }
+
 }
 
