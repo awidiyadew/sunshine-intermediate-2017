@@ -12,6 +12,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cf.awidiyadew.sunshine_intermediate_class.adapter.ListForecastAdapter;
+import cf.awidiyadew.sunshine_intermediate_class.model.ApiResponse;
 import cf.awidiyadew.sunshine_intermediate_class.model.DummyForecast;
+import cf.awidiyadew.sunshine_intermediate_class.model.ListForecast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.recyclerview) RecyclerView recyclerView;
     ListForecastAdapter adapter;
-    private List<DummyForecast> listData = new ArrayList<>();
+    private List<DummyForecast> listDataDummy = new ArrayList<>();
+    private List<ListForecast> listWeather = new ArrayList<>();
+    private Gson gson = new Gson();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerview(){
-        adapter = new ListForecastAdapter(listData);
+        //adapter = new ListForecastAdapter(listDataDummy);
+        adapter = new ListForecastAdapter(listWeather);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
         //getDummyData();
@@ -51,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public void getDummyData(){
         for (int i = 0 ; i < 20 ; i++){
             DummyForecast dummyForecast = new DummyForecast("Sunday", "Sunny", 20 + i, 25 + i);
-            listData.add(dummyForecast);
+            listDataDummy.add(dummyForecast);
         }
 
         adapter.notifyDataSetChanged();
@@ -67,6 +73,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, "onResponse: " + response);
+
+                ApiResponse apiResponse = gson.fromJson(response, ApiResponse.class);
+
+                for (ListForecast listItem : apiResponse.getList()){
+                    listWeather.add(listItem);
+                }
+
+                adapter.notifyDataSetChanged();
+
             }
         };
 

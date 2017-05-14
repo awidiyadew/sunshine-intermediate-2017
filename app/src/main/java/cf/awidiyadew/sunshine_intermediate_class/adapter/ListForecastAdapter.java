@@ -10,6 +10,7 @@ import java.util.List;
 
 import cf.awidiyadew.sunshine_intermediate_class.R;
 import cf.awidiyadew.sunshine_intermediate_class.model.DummyForecast;
+import cf.awidiyadew.sunshine_intermediate_class.model.ListForecast;
 
 /**
  * Created by awidiyadew on 5/7/17.
@@ -17,9 +18,9 @@ import cf.awidiyadew.sunshine_intermediate_class.model.DummyForecast;
 
 public class ListForecastAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<DummyForecast> listData = new ArrayList<>();
+    private List<ListForecast> listData = new ArrayList<>();
 
-    public ListForecastAdapter(List<DummyForecast> listData) {
+    public ListForecastAdapter(List<ListForecast> listData) {
         this.listData = listData;
     }
 
@@ -35,8 +36,8 @@ public class ListForecastAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ForecastItemViewHolder forecastItemViewHolder = (ForecastItemViewHolder) holder;
-        DummyForecast data = listData.get(position);
-        forecastItemViewHolder.bind(data);
+        ListForecast data = listData.get(position);
+        forecastItemViewHolder.bind(data, position);
     }
 
     @Override

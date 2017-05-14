@@ -19,7 +19,7 @@ public class ApiResponse{
 	private double message;
 
 	@SerializedName("list")
-	private List<ListItem> list;
+	private List<ListForecast> list;
 
 	public void setCity(City city){
 		this.city = city;
@@ -53,11 +53,11 @@ public class ApiResponse{
 		return message;
 	}
 
-	public void setList(List<ListItem> list){
+	public void setList(List<ListForecast> list){
 		this.list = list;
 	}
 
-	public List<ListItem> getList(){
+	public List<ListForecast> getList(){
 		return list;
 	}
 

@@ -8,7 +8,7 @@ public class Temp{
 	private double min;
 
 	@SerializedName("max")
-	private int max;
+	private double max;
 
 	@SerializedName("eve")
 	private double eve;
@@ -17,10 +17,10 @@ public class Temp{
 	private double night;
 
 	@SerializedName("day")
-	private int day;
+	private double day;
 
 	@SerializedName("morn")
-	private int morn;
+	private double morn;
 
 	public void setMin(double min){
 		this.min = min;
@@ -34,7 +34,7 @@ public class Temp{
 		this.max = max;
 	}
 
-	public int getMax(){
+	public double getMax(){
 		return max;
 	}
 
@@ -54,11 +54,11 @@ public class Temp{
 		return night;
 	}
 
-	public void setDay(int day){
+	public void setDay(Double day){
 		this.day = day;
 	}
 
-	public int getDay(){
+	public Double getDay(){
 		return day;
 	}
 
@@ -66,7 +66,7 @@ public class Temp{
 		this.morn = morn;
 	}
 
-	public int getMorn(){
+	public double getMorn(){
 		return morn;
 	}
 
@@ -82,4 +82,12 @@ public class Temp{
 			",morn = '" + morn + '\'' + 
 			"}";
 		}
+
+	public String getDerajatMinTemp(){
+		return Math.round(min) + "\u00b0";
+	}
+
+	public String getDerajatMaxTemp(){
+		return Math.round(max) + "\u00b0";
+	}
 }

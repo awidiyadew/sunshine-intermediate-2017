@@ -2,12 +2,16 @@ package cf.awidiyadew.sunshine_intermediate_class.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
-public class ListItem{
+public class ListForecast {
 
 	@SerializedName("dt")
-	private int dt;
+	private Long dt;
 
 	@SerializedName("rain")
 	private double rain;
@@ -33,11 +37,11 @@ public class ListItem{
 	@SerializedName("speed")
 	private double speed;
 
-	public void setDt(int dt){
+	public void setDt(Long dt){
 		this.dt = dt;
 	}
 
-	public int getDt(){
+	public Long getDt(){
 		return dt;
 	}
 
@@ -108,7 +112,7 @@ public class ListItem{
 	@Override
  	public String toString(){
 		return 
-			"ListItem{" + 
+			"ListForecast{" +
 			"dt = '" + dt + '\'' + 
 			",rain = '" + rain + '\'' + 
 			",temp = '" + temp + '\'' + 
@@ -120,4 +124,33 @@ public class ListItem{
 			",speed = '" + speed + '\'' + 
 			"}";
 		}
+
+	public String getReadableTime(int pos){
+		if(pos == 1){
+			return "Tomorrow";
+		}else{
+			Date date = new Date(dt * 1000L);
+			DateFormat format = new SimpleDateFormat("EEEE");
+			format.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+			return format.format(date);
+		}
+	}
+
+	public String getTodayReadableTime(){
+		Date date = new Date(dt * 1000L);
+		DateFormat format = new SimpleDateFormat("MMM dd");
+		return "Today, "+format.format(date);
+	}
+
+	public String getReadableHumidity() {
+		return humidity + " %";
+	}
+
+	public String getReadablePressure() {
+		return Math.round(pressure) + " hPa";
+	}
+
+	public String getReadableWindSpeed() {
+		return Math.round(speed) + " m/sec";
+	}
 }

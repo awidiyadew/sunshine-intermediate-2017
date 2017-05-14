@@ -9,6 +9,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cf.awidiyadew.sunshine_intermediate_class.R;
 import cf.awidiyadew.sunshine_intermediate_class.model.DummyForecast;
+import cf.awidiyadew.sunshine_intermediate_class.model.ListForecast;
+import cf.awidiyadew.sunshine_intermediate_class.model.WeatherItem;
 
 /**
  * Created by awidiyadew on 5/7/17.
@@ -32,6 +34,22 @@ public class ForecastItemViewHolder extends RecyclerView.ViewHolder {
         tvForecast.setText(data.getForecast());
         tvMinTemp.setText(data.getMixTempWithDerajat()); // konversi int ke string
         tvMaxTemp.setText(data.getMaxTempWithDerajat()); // konversi int ke string
+    }
+
+    public void bind(ListForecast data, int position){
+
+        if (position == 0){
+            tvDay.setText(data.getTodayReadableTime());
+        } else {
+            tvDay.setText(data.getReadableTime(position));
+        }
+
+        WeatherItem weather = data.getWeather().get(0);
+
+        tvForecast.setText(weather.getDescription());
+        tvMinTemp.setText(data.getTemp().getDerajatMinTemp());
+        tvMaxTemp.setText(data.getTemp().getDerajatMaxTemp());
+
     }
 
 }
