@@ -30,8 +30,8 @@ public class ForecastItemViewHolder extends RecyclerView.ViewHolder {
     public void bind(DummyForecast data){
         tvDay.setText(data.getDay());
         tvForecast.setText(data.getForecast());
-        tvMinTemp.setText(String.valueOf(data.getMinTemp())); // konversi int ke string
-        tvMaxTemp.setText(String.valueOf(data.getMaxTemp())); // konversi int ke string
+        tvMinTemp.setText(data.getMixTempWithDerajat()); // konversi int ke string
+        tvMaxTemp.setText(data.getMaxTempWithDerajat()); // konversi int ke string
     }
 
 }
