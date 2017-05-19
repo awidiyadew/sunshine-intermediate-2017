@@ -11,6 +11,7 @@ import cf.awidiyadew.sunshine_intermediate_class.R;
 import cf.awidiyadew.sunshine_intermediate_class.model.DummyForecast;
 import cf.awidiyadew.sunshine_intermediate_class.model.ListForecast;
 import cf.awidiyadew.sunshine_intermediate_class.model.WeatherItem;
+import cf.awidiyadew.sunshine_intermediate_class.util.SunshineWeatherUtils;
 
 /**
  * Created by awidiyadew on 5/7/17.
@@ -43,6 +44,13 @@ public class ForecastItemViewHolder extends RecyclerView.ViewHolder {
         } else {
             tvDay.setText(data.getReadableTime(position));
         }
+
+        ivWeatherIcon.setImageResource(
+                SunshineWeatherUtils
+                        .getSmallArtResourceIdForWeatherCondition(
+                                data.getWeather().get(0).getId()
+                        )
+        );
 
         WeatherItem weather = data.getWeather().get(0);
 
