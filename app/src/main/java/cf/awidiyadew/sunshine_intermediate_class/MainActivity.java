@@ -53,7 +53,10 @@ public class MainActivity extends AppCompatActivity {
         adapter.setForecastItemClickListener(new ListForecastAdapter.ForecastItemClickListener() {
             @Override
             public void onForecastItemClick(ListForecast data, int position) {
-                //Intent intentDetail = new Intent(MainActivity.this,)
+                Intent intentDetail = new Intent(MainActivity.this, DetailActivity.class);
+                intentDetail.putExtra("data", gson.toJson(data)); // mengirim data ke detail activity
+                intentDetail.putExtra("position", position);
+                startActivity(intentDetail);
             }
         });
 
