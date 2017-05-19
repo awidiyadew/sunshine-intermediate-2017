@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import cf.awidiyadew.sunshine_intermediate_class.R;
 import cf.awidiyadew.sunshine_intermediate_class.model.ListForecast;
 import cf.awidiyadew.sunshine_intermediate_class.model.WeatherItem;
@@ -25,6 +26,7 @@ public class TodayForecastItemViewHolder extends RecyclerView.ViewHolder {
 
     public TodayForecastItemViewHolder(View itemView) {
         super(itemView);
+        ButterKnife.bind(this, itemView);
     }
 
     public void bind(ListForecast data, int position){
