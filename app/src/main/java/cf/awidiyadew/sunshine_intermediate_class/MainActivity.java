@@ -1,5 +1,6 @@
 package cf.awidiyadew.sunshine_intermediate_class;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         setupRecyclerview();
+
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) actionBar.setElevation(0); // menghilangkan shadow pada action bar
 
     }
 
