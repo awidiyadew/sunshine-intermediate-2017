@@ -1,10 +1,13 @@
 package cf.awidiyadew.sunshine_intermediate_class;
 
+import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -41,7 +44,21 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) actionBar.setElevation(0); // menghilangkan shadow pada action bar
+
         setupRecyclerview();
+
+        // TODO: 5/19/17 B. Setup click listener : step 4
+        adapter.setForecastItemClickListener(new ListForecastAdapter.ForecastItemClickListener() {
+            @Override
+            public void onForecastItemClick(ListForecast data, int position) {
+                Intent intentDetail = new Intent(MainActivity.this, DetailActivity.class);
+                intentDetail.putExtra("data", gson.toJson(data)); // mengirim data ke detail activity
+                intentDetail.putExtra("position", position);
+                startActivity(intentDetail);
+            }
+        });
 
     }
 

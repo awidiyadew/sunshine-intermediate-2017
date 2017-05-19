@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#fff</color>
+
+    <!--our detail accent colors -->
+    <color name="detail_accent_pane_background">#455A64</color>
+    <color name="detail_accent_label">#90A4AE</color>
 </resources>
