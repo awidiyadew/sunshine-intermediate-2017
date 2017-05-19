@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -42,10 +43,18 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        setupRecyclerview();
-
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.setElevation(0); // menghilangkan shadow pada action bar
+
+        setupRecyclerview();
+
+        // TODO: 5/19/17 B. Setup click listener : step 4
+        adapter.setForecastItemClickListener(new ListForecastAdapter.ForecastItemClickListener() {
+            @Override
+            public void onForecastItemClick(ListForecast data) {
+                Toast.makeText(MainActivity.this, "Test click - max temp " + data.getTemp().getDerajatMaxTemp(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
