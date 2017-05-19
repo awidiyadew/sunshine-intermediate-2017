@@ -47,7 +47,7 @@ public class ListForecastAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         // TODO: 5/19/17 A. Setup today vholder : step 3
 
         final int viewType = getItemViewType(position);
@@ -67,10 +67,10 @@ public class ListForecastAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             @Override
             public void onClick(View v) {
                 if (mForecastClickCallback != null)
-                    mForecastClickCallback.onForecastItemClick(data);
+                    mForecastClickCallback.onForecastItemClick(data, position);
                 else
                     Log.e(TAG, "onClick: Forecase click listener is null, " +
-                            "don't forget to call adapter.setForecastItemClickListener(this)");
+                            "don't forget to call adapter.setForecastItemClickListener()");
             }
         });
 
@@ -100,6 +100,6 @@ public class ListForecastAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     // TODO: 5/19/17 B. Setup click listener : step 1
     // Inner interface class utk click listener pada recyclerview
     public interface ForecastItemClickListener{
-        void onForecastItemClick(ListForecast data);
+        void onForecastItemClick(ListForecast data, int position);
     }
 }

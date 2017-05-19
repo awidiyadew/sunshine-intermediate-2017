@@ -1,5 +1,6 @@
 package cf.awidiyadew.sunshine_intermediate_class;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -51,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         // TODO: 5/19/17 B. Setup click listener : step 4
         adapter.setForecastItemClickListener(new ListForecastAdapter.ForecastItemClickListener() {
             @Override
-            public void onForecastItemClick(ListForecast data) {
-                Toast.makeText(MainActivity.this, "Test click - max temp " + data.getTemp().getDerajatMaxTemp(), Toast.LENGTH_SHORT).show();
+            public void onForecastItemClick(ListForecast data, int position) {
+                //Intent intentDetail = new Intent(MainActivity.this,)
             }
         });
 
