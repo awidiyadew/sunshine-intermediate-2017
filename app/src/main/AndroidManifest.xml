@@ -8,6 +8,7 @@
         android:allowBackup="true"
         android:icon="@drawable/art_clear"
         android:label="@string/app_name"
+        android:name=".Sunshine"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
