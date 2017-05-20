@@ -11,7 +11,7 @@ import java.util.TimeZone;
 public class ListForecast {
 
 	@SerializedName("dt")
-	private Long dt;
+	private long dt;
 
 	@SerializedName("rain")
 	private double rain;
@@ -37,7 +37,7 @@ public class ListForecast {
 	@SerializedName("speed")
 	private double speed;
 
-	public void setDt(Long dt){
+	public void setDt(int dt){
 		this.dt = dt;
 	}
 

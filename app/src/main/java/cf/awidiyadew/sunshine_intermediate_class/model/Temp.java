@@ -30,7 +30,7 @@ public class Temp{
 		return min;
 	}
 
-	public void setMax(int max){
+	public void setMax(double max){
 		this.max = max;
 	}
 
