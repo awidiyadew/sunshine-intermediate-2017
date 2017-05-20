@@ -78,6 +78,8 @@ public class DetailActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home)
             onBackPressed();
         return super.onOptionsItemSelected(item);
+
+
     }
 
     @Override
